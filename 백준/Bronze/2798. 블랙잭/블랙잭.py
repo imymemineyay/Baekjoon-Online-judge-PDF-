@@ -1,13 +1,12 @@
-N,M = map(int,input().split())
-card_num = list(map(int,input().split()))
+N, M = map(int,input().split())
+cards = list(map(int,input().split()))
+max_tot = 0
 
-tot = []
+for first_idx in range(len(cards)-2):
+    for second_idx in range(first_idx+1,len(cards)-1):
+        for third_idx in range(second_idx+1, len(cards)):
+            tot = cards[first_idx] + cards[second_idx] + cards[third_idx]
+            if max_tot < tot and tot <= M:
+                max_tot = tot 
 
-for i in range(N-2) :
-    for j in range(i+1,N-1):
-        for k in range(j+1,N):
-            result = card_num[i]+card_num[j]+card_num[k]
-
-            if M >= result:
-                tot.append(result)
-print(max(tot))
+print(max_tot)        
