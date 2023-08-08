@@ -1,10 +1,11 @@
 def solution(participant, completion):
-    participant_dic = dict()
-    for i in participant :
-        participant_dic[i] = participant_dic.get(i,0) + 1
-        
-    for j in completion:
-        participant_dic[j] = participant_dic.get(j) - 1
+    p_dic = {p: 0 for p in set(participant)}
+    
+    for p in participant:
+        p_dic[p] += 1
 
-    answer = [name for name,cnt in participant_dic.items() if cnt >= 1][0]
+    for j in completion:
+        p_dic[j] -= 1
+
+    answer = [name for name,cnt in p_dic.items() if cnt >= 1][0]
     return answer
