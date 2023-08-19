@@ -1,14 +1,14 @@
-n = 0
+# 첫번째 수 
+n = 1
 lst = []
 
-dns = []
+dn_s = []
 for i in range(1, 10000):
 
-  # make d(i)
-
-  dn = i + sum(list(map(int, list(str(i)))))
-  dns.append(dn)
+  # d(i) 만들기
+      dn = i + sum(list(map(int, list(str(i)))))
+      dn_s.append(dn)
 
 for i in range(1, 10000):
-  if i not in dns:
-    print(i)
+      if i not in dn_s:
+            print(i)
