@@ -1,6 +1,6 @@
 # [level 4] 서울에 위치한 식당 목록 출력하기 - 131118 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/131118#qna) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/131118) 
 
 ### 성능 요약
 
@@ -16,7 +16,7 @@ Empty
 
 ### 제출 일자
 
-2024년 03월 09일 21:10:18
+2024년 03월 09일 21:11:08
 
 ### 문제 설명
 
