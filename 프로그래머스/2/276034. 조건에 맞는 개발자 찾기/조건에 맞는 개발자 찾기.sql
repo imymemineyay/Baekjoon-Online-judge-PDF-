@@ -1,4 +1,6 @@
-SELECT ID, EMAIL, FIRST_NAME, LAST_NAME
-    FROM developers
-    WHERE skill_code & (SELECT SUM(code) FROM skillcodes WHERE name in('Python', 'C#'))
-    ORDER BY id ;
+-- #2
+
+SELECT DISTINCT id, email, first_name, last_name
+    FROM developers CROSS JOIN skillcodes
+    WHERE (skill_code & code) AND (name IN ('python','c#'))
+    ORDER BY id;
