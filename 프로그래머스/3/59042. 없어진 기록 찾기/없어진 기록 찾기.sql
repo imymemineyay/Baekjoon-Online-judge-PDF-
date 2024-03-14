@@ -1,5 +1,6 @@
-SELECT O.ANIMAL_ID, O.NAME
-FROM ANIMAL_OUTS AS O
-LEFT JOIN ANIMAL_INS AS I ON O.ANIMAL_ID = I.ANIMAL_ID 
-WHERE I.DATETIME IS NULL
+-- #2 
 
+SELECT o.animal_id, o.name
+FROM animal_outs AS o LEFT OUTER JOIN animal_ins AS i USING (animal_id)
+WHERE i.datetime IS NULL
+ORDER BY o.animal_id;
