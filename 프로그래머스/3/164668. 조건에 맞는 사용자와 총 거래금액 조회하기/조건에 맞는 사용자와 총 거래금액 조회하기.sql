@@ -1,9 +1,7 @@
-SELECT U.USER_ID, U.NICKNAME, SUM(B.PRICE) TOTAL_SALES 
-FROM USED_GOODS_BOARD B
-JOIN USED_GOODS_USER U
-ON B.WRITER_ID = U.USER_ID
-AND B.STATUS = 'DONE'
-GROUP BY U.USER_ID 
-HAVING TOTAL_SALES >= 700000
-ORDER BY TOTAL_SALES
-
+-- #2 
+SELECT user_id, nickname, SUM(price) AS total_sales
+FROM used_goods_board JOIN used_goods_user ON writer_id = user_id
+WHERE status = 'done'
+GROUP BY user_id
+HAVING SUM(price) >= 700000
+ORDER BY 3;
