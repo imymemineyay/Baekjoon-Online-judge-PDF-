@@ -1,9 +1,8 @@
-WITH hg AS (SELECT emp_no, sum(score) score
-                FROM hr_grade
-                WHERE year = '2022'
-                GROUP BY emp_no
-                ORDER BY score DESC
-                LIMIT 1)
-                
-SELECT hg.score, hg.emp_no, he.emp_name, he.position, he.email
-    FROM hr_employees he JOIN hg ON he.emp_no = hg.emp_no
+-- #2
+
+SELECT SUM(score) AS score, emp_no,emp_name, position, email 
+FROM hr_employees JOIN hr_grade USING(emp_no)
+WHERE year=2022
+GROUP BY emp_no
+ORDER BY 1 DESC
+LIMIT 1;
