@@ -1,6 +1,6 @@
-SELECT e.dept_id, d.dept_name_en, ROUND(AVG(e.sal),0) AS avg_sal
-    FROM hr_employees AS e 
-        JOIN hr_department AS d 
-        ON e.dept_id = d.dept_id
-    GROUP BY e.dept_id
-    ORDER BY avg_sal DESC;
+-- #2
+
+SELECT dept_id, dept_name_en, ROUND(AVG(sal),0) AS avg_sal
+FROM hr_department JOIN hr_employees USING(dept_id)
+GROUP BY dept_id
+ORDER BY 3 DESC;
