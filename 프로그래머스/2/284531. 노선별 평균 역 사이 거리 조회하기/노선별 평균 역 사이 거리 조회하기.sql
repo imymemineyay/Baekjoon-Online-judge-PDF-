@@ -1,6 +1,8 @@
+-- #2
+
 SELECT route, 
-       concat(round(sum(D_BETWEEN_DIST),1),'km') total_distance, 
-       concat(round(avg(D_BETWEEN_DIST),2),'km') average_distance
-    FROM subway_distance
-    GROUP BY route
-    ORDER BY round(sum(D_BETWEEN_DIST),2) DESC;
+       CONCAT(ROUND(SUM(d_between_dist),1),'km') AS total_distance, 
+       CONCAT(ROUND(AVG(d_between_dist),2),'km') AS average_distance
+FROM subway_distance 
+GROUP BY route
+ORDER BY ROUND(SUM(d_between_dist),1) DESC;
