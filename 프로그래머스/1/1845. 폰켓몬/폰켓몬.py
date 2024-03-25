@@ -11,10 +11,18 @@
 # 그래서 종류가 몇갠지 그것이 중요하다 왜냐 안겹치니까~!
 
 def solution(nums): 
-    max_products = len(nums)//2 #가지고 갈수있는 개수
-    pocket_type = set(nums)# 포켓몬 종류 수 
-    num_pocket_type = len(pocket_type) #포켓몬 종류 개수
-    return min(max_products,num_pocket_type)   
+    answer = 0
+    pot = {}
+    for i in nums:
+        pot[i] = pot.get(i,0)+1
+    num_pocket_type = len(pot)
+    max_products = len(nums)//2 
+    
+    if num_pocket_type >= max_products: 
+        answer = max_products
+    else: 
+        answer = num_pocket_type
+    return answer 
     
     
     
