@@ -26,9 +26,9 @@ def solution(answers):
     # 3. 갯수를 기준으로 정렬하고, 만약 같은 값이 여러개라면 이름을 기준으로 오름차순 해준다.
     correct_num = sorted(correct_num,key=lambda x: (-x[1], x[0]))
 
-    if correct_num[0][1] == correct_num[1][1] == correct_num[2][1]:
+    if correct_num[0][1] ==  correct_num[2][1]:
         answer = [correct_num[i][0]+1 for i in range(3)]
-    elif correct_num[0][1] == correct_num[1][1] != correct_num[2][1]: 
+    elif correct_num[0][1] == correct_num[1][1] : 
         answer = [correct_num[i][0]+1 for i in range(2)]
     else:
         answer = [correct_num[0][0]+1]
