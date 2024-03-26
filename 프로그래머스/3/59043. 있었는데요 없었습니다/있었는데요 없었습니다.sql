@@ -1,5 +1,6 @@
--- #2
-SELECT o.animal_id, o.name 
-FROM animal_outs AS o LEFT JOIN animal_ins AS i USING (animal_id)
-WHERE o.datetime < i.datetime
-ORDER BY i.datetime ;
+-- #3
+
+SELECT i.animal_id, i.name
+FROM animal_ins AS i JOIN animal_outs AS o USING(animal_id)
+WHERE i.datetime > o.datetime
+ORDER BY i.datetime 
