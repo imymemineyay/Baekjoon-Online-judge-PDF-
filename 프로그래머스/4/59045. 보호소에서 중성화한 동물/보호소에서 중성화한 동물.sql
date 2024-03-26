@@ -1,7 +1,8 @@
--- #2 
+-- #3
 
-SELECT o.animal_id, o.animal_type, o.name 
-FROM animal_outs AS o LEFT JOIN animal_ins AS i USING (animal_id)
-WHERE i.sex_upon_intake like 'intact%' 
-    AND (o.sex_upon_outcome like 'spayed%' OR o.sex_upon_outcome like 'neutered%')
-ORDER BY o.animal_id;
+SELECT i.animal_id, i.animal_type, i.name
+FROM animal_ins AS i JOIN animal_outs AS o USING(animal_id)
+WHERE i.sex_upon_intake like '%Intact%' 
+    AND (o.sex_upon_outcome like '%Spayed%' 
+         OR o.sex_upon_outcome like '%Neutered%')
+ORDER BY animal_id;
