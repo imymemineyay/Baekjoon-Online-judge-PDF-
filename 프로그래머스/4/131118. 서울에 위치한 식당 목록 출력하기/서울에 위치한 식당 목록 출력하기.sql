@@ -1,8 +1,9 @@
--- #2
+-- # 3
 
-SELECT i.rest_id, i.rest_name, i.food_type, i.favorites, i.address, i.tel, 
-        ROUND(AVERAGE(r.review_score),2) AS score
-    FROM rest_info AS i JOIN rest_review AS r USING (rest_id)
-    GROUP BY i.rest_id
-    HAVING i.address like '서울%'
-    ORDER BY score DESC , favorites DESC; 
+-- 서울에 위치한 식당의 id, name, type, favorites, address, ROUND(AVG(review),2)
+
+SELECT rest_id, rest_name, food_type, favorites, address, ROUND(AVG(review_score),2) AS score
+FROM rest_info JOIN rest_review USING(rest_id)
+WHERE address like '서울%'
+GROUP BY rest_id
+ORDER BY 6 DESC, 4 DESC;
