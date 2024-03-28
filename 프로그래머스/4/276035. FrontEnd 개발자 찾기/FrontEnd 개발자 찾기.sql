@@ -1,6 +1,6 @@
--- # 2
+-- #3
 
-SELECT DISTINCT id, email, first_name, last_name
-FROM skillcodes JOIN developers
-WHERE (skill_code & code) AND category = 'Front End'
-ORDER BY id;
+SELECT DISTINCT ID, EMAIL, FIRST_NAME, LAST_NAME
+FROM DEVELOPERS, SKILLCODES
+WHERE SKILL_CODE&CODE AND CATEGORY='Front End'
+ORDER BY ID;
