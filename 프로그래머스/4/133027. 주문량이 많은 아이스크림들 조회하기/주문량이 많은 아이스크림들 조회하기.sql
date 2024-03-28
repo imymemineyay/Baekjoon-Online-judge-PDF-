@@ -1,14 +1,11 @@
--- #2 
+-- # 3
 
--- first_half의 pk 는 flavor, fk는 shipment_id
--- july의 pk는 shipment_id, fk는 flavor
+-- [first_half] shipment_id(FK), flavor(PK), total_order 1
+-- [july] shipment_id(PK), flavor(FK), total_order n
 
--- first_half 1 : july 다 (flavor을 조회하는 문제이기 때문)
 
-SELECT flavor
-FROM first_half AS h JOIN july AS j USING(flavor)
--- first_half 의 총 주문량은 july와 조인되면서 중복되게 됨 
--- 따라서 avg를 해서 중복 제거값으로 구해줘야함
+SELECT flavor 
+FROM july LEFT JOIN first_half USING(flavor)
 GROUP BY flavor
-ORDER BY AVG(h.total_order) + SUM(j.total_order) DESC
+ORDER BY (SUM(july.total_order) + AVG(first_half.total_order))  DESC
 LIMIT 3;
