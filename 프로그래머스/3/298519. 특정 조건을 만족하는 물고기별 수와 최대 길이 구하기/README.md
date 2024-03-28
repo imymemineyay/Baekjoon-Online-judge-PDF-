@@ -1,6 +1,6 @@
 # [level 3] 특정 조건을 만족하는 물고기별 수와 최대 길이 구하기 - 298519 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/298519#qna) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/298519) 
 
 ### 성능 요약
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2024년 03월 22일 12:12:38
+2024년 03월 29일 01:22:20
 
 ### 문제 설명
 
