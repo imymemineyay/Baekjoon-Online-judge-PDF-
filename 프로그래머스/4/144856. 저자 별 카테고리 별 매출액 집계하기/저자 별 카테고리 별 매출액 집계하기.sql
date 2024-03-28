@@ -1,11 +1,9 @@
--- #2
+-- #3
 
--- author 1 : book n : book_sales n
-
-SELECT b.author_id, a.author_name, category, SUM(sales*price) AS total_sales
-FROM book AS b
-    JOIN author AS a USING (author_id)
-    JOIN book_sales  AS s USING (book_id) 
-WHERE DATE_FORMAT(sales_date, '%Y-%m') = '2022-01'
-GROUP BY b.author_id, category
-ORDER BY b.author_id, category DESC;
+SELECT a.author_id, a.author_name, b.category, 
+    SUM(bs.sales * b.price) AS total_sales 
+FROM author AS a JOIN book AS b USING (author_id)
+    JOIN book_sales AS bs USING (book_id)
+WHERE DATE_FORMAT(bs.sales_date,'%Y-%m') = '2022-01'
+GROUP BY a.author_id,a.author_name, b.category
+ORDER BY a.author_id, b.category DESC;
