@@ -1,18 +1,17 @@
 -- #3 
-
-WITH availability AS (SELECT car_id
-                     FROM car_rental_company_rental_history
-                     WHERE '2022-11-01' BETWEEN start_date AND end_date
-                     OR '2022-11-31' BETWEEN start_date AND end_date)
+WITH AVAILABILITY AS (SELECT CAR_ID 
+                      FROM CAR_RENTAL_COMPANY_RENTAL_HISTORY
+                      WHERE '2022-11-01' BETWEEN START_DATE AND END_DATE 
+                        OR'2022-11-30' BETWEEN START_DATE AND END_DATE)
                      
-SELECT c.car_id, c.car_type, 
-    ROUND((daily_fee*30)*(1-discount_rate/100),0)AS fee
-FROM car_rental_company_car AS c 
-    LEFT JOIN car_rental_company_rental_history AS h USING(car_id) 
-    JOIN car_rental_company_discount_plan AS p USING(car_type)
-WHERE c.car_type IN ('세단','SUV')
-    AND c.car_id NOT IN (SELECT car_id FROM availability)
-    AND p.duration_type = '30일 이상'
-GROUP BY c.car_id
-HAVING fee >= 500000 AND fee < 2000000
+                     
+SELECT DISTINCT C.CAR_ID, C.CAR_TYPE, 
+        ROUND((C.DAILY_FEE*30)*(1-(P.DISCOUNT_RATE/100)),0) AS FEE
+FROM CAR_RENTAL_COMPANY_CAR AS C 
+    LEFT JOIN CAR_RENTAL_COMPANY_RENTAL_HISTORY AS H USING(CAR_ID)
+    JOIN CAR_RENTAL_COMPANY_DISCOUNT_PLAN AS P USING(CAR_TYPE)
+WHERE C.CAR_TYPE IN ("세단",'SUV') 
+    AND C.CAR_ID NOT IN (SELECT CAR_ID FROM AVAILABILITY)
+    AND P.DURATION_TYPE = '30일 이상'
+HAVING FEE >= 500000 AND FEE <2000000
 ORDER BY 3 DESC, 2, 1 DESC;
