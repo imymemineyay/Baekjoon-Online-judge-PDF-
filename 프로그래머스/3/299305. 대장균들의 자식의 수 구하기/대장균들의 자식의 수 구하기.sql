@@ -1,9 +1,8 @@
--- # 1
+-- # 2
 
-WITH child_cnt AS (SELECT parent_id, count(*) AS child_count
-FROM ecoli_data 
-GROUP BY PARENT_ID)
+WITH id_tb AS (SELECT parent_id, COUNT(*) AS child_count 
+               FROM ecoli_data GROUP BY parent_id)
 
 SELECT id, IFNULL(child_count,0) AS child_count
-FROM ecoli_data AS d LEFT JOIN child_cnt AS c ON d.id = c.parent_id
-ORDER BY id;
+FROM ecoli_data LEFT JOIN id_tb ON ecoli_data.ID = id_tb.parent_id
+ORDER BY 1;
