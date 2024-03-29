@@ -1,14 +1,18 @@
 def solution(citations):
     answer=0
-    # 1. 논문의 피인용수를 내림차순 정렬한다.
-    citations.sort(reverse=True)
-
-    # 2. 논문의 갯수보다 피인용수가 같거나 작아질때 그때가 h_index의 수이다. 
-    for i in range(len(citations)):
-        if citations[i] < i+1:
+    cnt = 0
+    # 1. 논문의 인용 횟수를 내림차순 정렬한 후, 하나씩 추출한다. 
+    sorted_citations = sorted(citations, reverse=True)
+    for i in sorted_citations:
+    # 2. 인용 횟수와 몇 편째인지 함께 구해준다.
+        if cnt < i:
+            cnt +=1
+    # 3. 인용 횟수가 h편 미만이면 다음 작업을 멈춘다.
+        elif cnt > i:
             break
-        else:
-            answer +=1
+
+    # 4. 몇편째인지를 반환한다. 
+    answer = cnt
     return answer
 
 '''
