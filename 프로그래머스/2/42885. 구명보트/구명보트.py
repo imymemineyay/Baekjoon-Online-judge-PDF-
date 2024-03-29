@@ -1,16 +1,31 @@
+from collections import deque
+
+
 def solution(people, limit):
     answer = 0
-    sorted_desc_people = sorted(people, reverse =True)
-    cnt=0
-
-    for idx, i in enumerate(sorted_desc_people):
-        if i + sorted_desc_people[-1] <= limit:
-            cnt += 1
-            sorted_desc_people.pop()
-        elif (i + sorted_desc_people[-1] > limit) & i <= limit:
-            cnt+=1
+    people = sorted(people, reverse=True)
+    people_in_island  = deque(people)
+    
+    boat = 0
+    for person in list(people_in_island):
+        if len(people_in_island) > 1:
+            if person + people_in_island[-1] <= limit:
+                boat += 1
+                people_in_island.popleft()
+                people_in_island.pop()
+            elif person <= limit:
+                boat += 1
+                people_in_island.popleft()
+            else:
+                people_in_island.popleft()
+        elif len(people_in_island) == 1:
+            if person <= limit:
+                boat += 1
+                people_in_island.popleft()
+            else:
+                people_in_island.popleft()
         else:
-            continue
+            break
+    answer = boat
 
-    answer = cnt
     return answer
