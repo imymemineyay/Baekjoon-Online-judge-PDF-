@@ -1,6 +1,6 @@
 # [level 4] 언어별 개발자 분류하기 - 276036 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/276036#qna) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/276036) 
 
 ### 성능 요약
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2024년 03월 29일 02:29:36
+2024년 03월 30일 00:47:21
 
 ### 문제 설명
 
